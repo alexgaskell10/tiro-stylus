@@ -1,0 +1,17 @@
+[Unit]
+Description=Tiro Stylus — Telegram-triggered Claude Code assistant
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ec2-user
+WorkingDirectory=/home/ec2-user/tiro-stylus
+ExecStart=/bin/bash -c 'source /home/ec2-user/tiro-stylus/scripts/load_secrets.sh && /home/ec2-user/tiro-stylus/.venv/bin/tiro-stylus listen'
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
