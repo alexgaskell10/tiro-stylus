@@ -50,7 +50,9 @@ def run_claude(message: str) -> None:
         "--dangerously-skip-permissions",
         "--verbose",
         "--output-format", "json",
-        "-p", prompt,
+        "-p",
+        "--",
+        prompt,
     ]
     logger.info("Spawning claude for: %s", message[:80])
 
